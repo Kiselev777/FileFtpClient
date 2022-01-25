@@ -4,8 +4,10 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 class FtpClient {
@@ -41,6 +43,16 @@ class FtpClient {
     void close() throws IOException {
         ftp.disconnect();
     }
+    public Collection<String> listFiles(String path) throws IOException {
+        FTPFile[] files = ftp.listFiles(path);
+        List<String> list = new ArrayList<>();
+        for (FTPFile file : files) {
+            String name = file.getName();
+            list.add(name);
+        }
+        return list;
+    }
+    
     void putFileToPath(File file, String path) throws IOException {
         ftp.storeFile(path, new FileInputStream(file));
     }
