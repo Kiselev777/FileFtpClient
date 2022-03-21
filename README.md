@@ -1,3 +1,6 @@
+![master](https://github.com/Kiselev777/FileFtpClient/actions/workflows/maven.yml/badge.svg?branch=master)
+
+
 FTP client to get list and download files from an FTP server
 My service contains 2 classes:
 1. FtpClient - connecting to server, close connection\ get collection files, put in the path or download.
